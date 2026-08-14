@@ -1,0 +1,39 @@
+// Compose setup mirrors @expo/ui's own Android library, which is the reference
+// for running Jetpack Compose inside an Expo module.
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.jetbrains.kotlin.plugin.compose:org.jetbrains.kotlin.plugin.compose.gradle.plugin:${kotlinVersion}")
+  }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'expo-module-gradle-plugin'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+
+group = 'com.tally.widget'
+version = '1.0.0'
+
+android {
+  namespace "com.tally.widget"
+  defaultConfig {
+    versionCode 1
+    versionName "1.0.0"
+  }
+  buildFeatures {
+    compose true
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  // Glance renders the widget; glance-material3 supplies the dynamic-colour theme.
+  implementation "androidx.glance:glance-appwidget:1.1.1"
+  implementation "androidx.glance:glance-material3:1.1.1"
+  implementation "androidx.core:core-ktx:1.18.0"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
+}

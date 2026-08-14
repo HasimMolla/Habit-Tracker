@@ -39,3 +39,11 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Generated native projects (recreated by `expo prebuild`)
+/android/
+/ios/
+
+# Gradle output from the local widget module
+modules/*/android/build/
+modules/*/android/.gradle/
